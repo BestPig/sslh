@@ -25,7 +25,7 @@
 #ifdef LIBCONFIG
 #include <libconfig.h>
 #endif
-#include <regex.h>
+#include <pcreposix.h>
 
 #include "common.h"
 #include "probe.h"
@@ -192,7 +192,7 @@ static void setup_regex_probe(struct proto *p, config_setting_t* probes)
     for (i = 0; i < num_probes; i++) {
         probe_list[i] = malloc(sizeof(*(probe_list[i])));
         expr = config_setting_get_string_elem(probes, i);
-        res = regcomp(probe_list[i], expr, 0);
+        res = regcomp(probe_list[i], expr, REG_NEWLINE);
         if (res) {
             err = malloc(errsize = regerror(res, probe_list[i], NULL, 0));
             regerror(res, probe_list[i], err, errsize);

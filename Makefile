@@ -19,7 +19,7 @@ endif
 CC ?= gcc
 CFLAGS ?=-Wall -g $(CFLAGS_COV)
 
-LIBS=
+LIBS=-lpcreposix
 OBJS=common.o sslh-main.o probe.o
 
 ifneq ($(strip $(USELIBWRAP)),)

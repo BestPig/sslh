@@ -21,7 +21,7 @@
 
 #define _GNU_SOURCE
 #include <stdio.h>
-#include <regex.h>
+#include <pcreposix.h>
 #include <ctype.h>
 #include "probe.h"
 
